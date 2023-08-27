@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/products', [ProductController::class, 'all']);
+Route::post('/products', [ProductController::class, 'save']);
+
+Route::get('/projects', [ProjectController::class, 'all']);
+Route::post('/projects', [ProjectController::class, 'save']);
+
