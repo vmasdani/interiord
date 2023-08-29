@@ -1,8 +1,32 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Ref, ref } from "vue";
+import { fetchProjects } from "../fetchers";
+
+const projects = ref([]) as Ref<any[]>;
+
+const handleFetchProjects = async () => {
+    const d = await fetchProjects();
+
+    if (d) {
+        projects.value = d;
+    }
+};
+
+const handleInit = async () => {
+    handleFetchProjects();
+};
+
+handleInit();
+</script>
 
 <template>
-    <div>
+    <div class="d-flex">
         <div><h4>Projects</h4></div>
+        <div>
+            <a href="#/projects/new"
+                ><button class="btn btn-sm btn-primary">Add</button></a
+            >
+        </div>
     </div>
     <div
         class="overflow-auto border border-dark"
@@ -12,11 +36,15 @@
             <tr>
                 <th
                     class="bg-dark text-light"
-                    v-for="h in ['#', 'Name']"
+                    v-for="h in ['#', 'Name', 'Is hot?']"
                     style="position: sticky; top: 0"
                 >
                     {{ h }}
                 </th>
+            </tr>
+            <tr v-for="(p, i) in projects">
+                <td class="border border-dark p-0 m-0">{{ i + 1 }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.name }}</td>
             </tr>
         </table>
     </div>

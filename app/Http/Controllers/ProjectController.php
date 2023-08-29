@@ -17,10 +17,10 @@ class ProjectController extends BaseController
     function save(Request $r)
     {
         $b = json_decode($r->getContent());
-        return Project::query()
+        return response(Project::query()
             ->updateOrCreate([
                 'id' => isset($b->id) ? $b->id : null
-            ], $b);
+            ], (array) $b));
     }
 
 }

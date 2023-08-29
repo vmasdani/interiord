@@ -41,6 +41,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereTop($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereType($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
+ * @property string|null $one_set
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereOneSet($value)
  * @mixin \Eloquent
  */
 class Product extends Model

@@ -9,6 +9,8 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import AdminSettingsVue from "./components/AdminSettings.vue";
 import ProductsVue from "./components/Products.vue";
 import ProjectVue from "./components/Project.vue";
+import ProductDetailVue from "./components/ProductDetail.vue";
+import ProjectDetailVue from "./components/ProjectDetail.vue";
 
 interface IAppContext {
     apiKey?: string | null;
@@ -17,7 +19,10 @@ interface IAppContext {
 const routes = [
     { path: "/", component: AdminSettingsVue },
     { path: "/products", component: ProductsVue },
+    { path: "/products/:id", component: ProductDetailVue },
+
     { path: "/projects", component: ProjectVue },
+    { path: "/projects/:id", component: ProjectDetailVue },
 ];
 
 const router = createRouter({
