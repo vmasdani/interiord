@@ -48,6 +48,7 @@ handleInit();
                         'Meja',
                         'Fin',
                         'Price',
+                        'Action',
                     ]"
                     style="position: sticky; top: 0"
                 >
@@ -68,6 +69,15 @@ handleInit();
                 <td class="border border-dark p-0 m-0">{{ p?.meja }}</td>
                 <td class="border border-dark p-0 m-0">{{ p?.fin }}</td>
                 <td class="border border-dark p-0 m-0">{{ p?.price }}</td>
+                <td class="border border-dark p-0 m-0">
+                    <a class="p-0 m-0" :href="`#/products/${p?.id}`">
+                        <div class="p-0 m-0">
+                            <button class="btn btn-sm btn-primary px-1 py-0">
+                                Edit
+                            </button>
+                        </div>
+                    </a>
+                </td>
             </tr>
         </table>
     </div>

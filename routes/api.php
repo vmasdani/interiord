@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminsettingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Http\Request;
@@ -28,3 +29,5 @@ Route::get('/projects', [ProjectController::class, 'all']);
 Route::get('/projects/{id}', [ProjectController::class, 'get']);
 Route::post('/projects', [ProjectController::class, 'save']);
 
+Route::get('/adminsetting', [AdminsettingController::class, 'first']);
+Route::post('/adminsetting', [AdminsettingController::class, 'save']);

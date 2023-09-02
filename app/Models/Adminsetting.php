@@ -38,6 +38,11 @@ class Adminsetting extends Model
 
     protected $fillable = [
         'id',
+        'whatsapp_number',
+        'email',
+        'tokopedia_link',
+        'address',
+        'instagram_link'
     ];
 
 }

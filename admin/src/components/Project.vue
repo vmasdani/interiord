@@ -43,6 +43,7 @@ handleInit();
                         'Material',
                         'Area',
                         'Is hot?',
+                        'Action',
                     ]"
                     style="position: sticky; top: 0"
                 >
@@ -57,6 +58,15 @@ handleInit();
                 <td class="border border-dark p-0 m-0">{{ p?.area }}</td>
                 <td class="border border-dark p-0 m-0">
                     <input :checked="p?.is_hot" type="checkbox" />
+                </td>
+                <td class="border border-dark p-0 m-0">
+                    <a class="p-0 m-0" :href="`#/projects/${p?.id}`">
+                        <div class="p-0 m-0">
+                            <button class="btn btn-sm btn-primary px-1 py-0">
+                                Edit
+                            </button>
+                        </div>
+                    </a>
                 </td>
             </tr>
         </table>
