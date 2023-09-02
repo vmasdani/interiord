@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { fetchProject } from "../fetchers";
 
 const project = ref({}) as Ref<any>;
 const router = useRouter();
@@ -22,6 +23,25 @@ const handleSave = async () => {
         console.error(e);
     }
 };
+
+const route = useRoute();
+const fetchProjectData = async () => {
+    if (!isNaN(parseInt((route.params as any)?.id))) {
+        const d = await fetchProject({
+            id: parseInt((route.params as any)?.id),
+        });
+
+        if (d) {
+            // alert(JSON.stringify(d));
+            project.value = d;
+        }
+    }
+};
+const handleInit = async () => {
+    fetchProjectData();
+};
+
+handleInit();
 </script>
 
 <template>
@@ -45,6 +65,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="project?.name"
             placeholder="Project Name..."
             class="form-control form-control-sm"
             @input="e=>{
@@ -58,6 +79,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="project?.location"
             placeholder="Location..."
             class="form-control form-control-sm"
             @input="e=>{
@@ -71,6 +93,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="project?.material"
             placeholder="Material..."
             class="form-control form-control-sm"
             @input="e=>{
@@ -84,12 +107,13 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="project?.area"
             placeholder="Area..."
             class="form-control form-control-sm"
             @input="e=>{
                 project.area = (e.target as HTMLInputElement).value
             }"
-        /> 
+        />
     </div>
 
     <div>
@@ -99,9 +123,11 @@ const handleSave = async () => {
         <input
             type="checkbox"
             :checked="project.is_hot"
-            @click="()=>{
-                project.is_hot = !project.is_hot
-            }"
+            @click="
+                () => {
+                    project.is_hot = !project.is_hot;
+                }
+            "
         />
     </div>
 

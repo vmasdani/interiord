@@ -17,7 +17,7 @@ class ProjectController extends BaseController
 
     function get(?int $id)
     {
-        return Project::query()->find($id)->first();
+        return Project::query()->find($id);
     }
 
 

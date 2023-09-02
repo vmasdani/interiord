@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Ref, ref } from "vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
+import { fetchProduct } from "../fetchers";
 
 const product = ref({}) as Ref<any>;
 const router = useRouter();
@@ -22,9 +23,28 @@ const handleSave = async () => {
         console.error(e);
     }
 };
+const route = useRoute();
+const fetchProductData = async () => {
+    if (!isNaN(parseInt((route.params as any)?.id))) {
+        const d = await fetchProduct({
+            id: parseInt((route.params as any)?.id),
+        });
+
+        if (d) {
+            // alert(JSON.stringify(d));
+            product.value = d;
+        }
+    }
+};
+const handleInit = async () => {
+    fetchProductData();
+};
+
+handleInit();
 </script>
 
 <template>
+    <!-- {{ JSON.stringify(product, null, 2) }} -->
     <div class="d-flex">
         <div><h4>Product Detail</h4></div>
         <div>
@@ -46,6 +66,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.name"
             @input="e=>{
                 product.name = (e.target as HTMLInputElement).value
             }"
@@ -74,6 +95,7 @@ const handleSave = async () => {
         </div>
 
         <input
+            :value="product?.type"
             placeholder="Product Type..."
             @input="e=>{
                 product.type = (e.target as HTMLInputElement).value
@@ -87,6 +109,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.price_per_m2"
             @input="e=>{
                 product.price_per_m2 = (e.target as HTMLInputElement).value
             }"
@@ -100,6 +123,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.t1"
             @input="e=>{
                 product.t1 = (e.target as HTMLInputElement).value
             }"
@@ -113,6 +137,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.t23"
             @input="e=>{
                 product.t23 = (e.target as HTMLInputElement).value
             }"
@@ -126,6 +151,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.one_set"
             @input="e=>{
                 product.one_set = (e.target as HTMLInputElement).value
             }"
@@ -139,6 +165,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.top"
             @input="e=>{
                 product.top = (e.target as HTMLInputElement).value
             }"
@@ -152,6 +179,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.meja"
             @input="e=>{
                 product.meja = (e.target as HTMLInputElement).value
             }"
@@ -165,6 +193,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.fin"
             @input="e=>{
                 product.fin = (e.target as HTMLInputElement).value
             }"
@@ -178,6 +207,7 @@ const handleSave = async () => {
     </div>
     <div>
         <input
+            :value="product?.price"
             @input="e=>{
                 product.price = (e.target as HTMLInputElement).value
             }"

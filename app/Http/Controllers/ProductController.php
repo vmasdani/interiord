@@ -16,7 +16,7 @@ class ProductController extends BaseController
     }
     function get(?int $id)
     {
-        return Product::query()->find($id)->first();
+        return Product::query()->find($id);
     }
 
     function save(Request $r)

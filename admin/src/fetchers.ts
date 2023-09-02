@@ -59,6 +59,8 @@ export const fetchProduct = async (params?: { id?: any }) => {
         if (resp.status !== 200) {
             throw await resp.text();
         }
+
+        // alert(JSON.stringify(await resp.json()))
         return await resp.json();
     } catch (e) {
         return null;
