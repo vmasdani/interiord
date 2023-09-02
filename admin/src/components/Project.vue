@@ -36,7 +36,14 @@ handleInit();
             <tr>
                 <th
                     class="bg-dark text-light"
-                    v-for="h in ['#', 'Name', 'Is hot?']"
+                    v-for="h in [
+                        '#',
+                        'Name',
+                        'Location',
+                        'Material',
+                        'Area',
+                        'Is hot?',
+                    ]"
                     style="position: sticky; top: 0"
                 >
                     {{ h }}
@@ -45,6 +52,12 @@ handleInit();
             <tr v-for="(p, i) in projects">
                 <td class="border border-dark p-0 m-0">{{ i + 1 }}</td>
                 <td class="border border-dark p-0 m-0">{{ p?.name }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.location }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.material }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.area }}</td>
+                <td class="border border-dark p-0 m-0">
+                    <input :checked="p?.is_hot" type="checkbox" />
+                </td>
             </tr>
         </table>
     </div>

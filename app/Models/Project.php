@@ -29,6 +29,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereMaterial($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereUpdatedAt($value)
+ * @property int|null $is_hot
+ * @method static \Illuminate\Database\Eloquent\Builder|Project whereIsHot($value)
  * @mixin \Eloquent
  */
 class Project extends Model
@@ -36,7 +38,11 @@ class Project extends Model
 
     protected $fillable = [
         'id',
-        'name'
+        'name',
+        'location',
+        'material',
+        'area',
+        'is_hot'
     ];
 
 }

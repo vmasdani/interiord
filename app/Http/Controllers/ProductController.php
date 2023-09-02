@@ -14,6 +14,11 @@ class ProductController extends BaseController
     {
         return Product::all();
     }
+    function get(?int $id)
+    {
+        return Product::query()->find($id)->first();
+    }
+
     function save(Request $r)
     {
         $b = json_decode($r->getContent());

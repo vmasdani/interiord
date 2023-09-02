@@ -57,6 +57,17 @@ handleInit();
             <tr v-for="(p, i) in products">
                 <td class="border border-dark p-0 m-0">{{ i + 1 }}</td>
                 <td class="border border-dark p-0 m-0">{{ p?.name }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.type }}</td>
+                <td class="border border-dark p-0 m-0">
+                    {{ p?.price_per_m2 }}
+                </td>
+                <td class="border border-dark p-0 m-0">{{ p?.t1 }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.t23 }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.one_set }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.top }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.meja }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.fin }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.price }}</td>
             </tr>
         </table>
     </div>

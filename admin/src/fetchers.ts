@@ -1,7 +1,7 @@
 export const fetchAdminSetup = async () => {
     try {
         const resp = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/adminsetup`
+            `${window.location.origin}/api/adminsetup`
         );
 
         if (resp.status !== 200) {
@@ -15,7 +15,7 @@ export const fetchAdminSetup = async () => {
 export const fetchProjects = async () => {
     try {
         const resp = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/projects`
+            `${window.location.origin}/api/projects`
         );
 
         if (resp.status !== 200) {
@@ -29,7 +29,7 @@ export const fetchProjects = async () => {
 export const fetchProducts = async () => {
     try {
         const resp = await fetch(
-            `${import.meta.env.VITE_BASE_URL}/api/products`
+            `${window.location.origin}/api/products`
         );
 
         if (resp.status !== 200) {

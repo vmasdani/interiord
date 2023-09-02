@@ -21,8 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/products', [ProductController::class, 'all']);
+Route::get('/products/{id}', [ProductController::class, 'get']);
 Route::post('/products', [ProductController::class, 'save']);
 
 Route::get('/projects', [ProjectController::class, 'all']);
+Route::get('/projects/{id}', [ProjectController::class, 'get']);
 Route::post('/projects', [ProjectController::class, 'save']);
 

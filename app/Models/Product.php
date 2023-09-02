@@ -50,7 +50,17 @@ class Product extends Model
 
     protected $fillable = [
         'id',
-        'name'
+        'name',
+        'type',
+        'price_per_m2',
+        't1',
+        't23',
+        'top',
+        'meja',
+        'fin',
+        'price',
+        'one_set'
+        
     ];
 
 }

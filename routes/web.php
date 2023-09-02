@@ -13,6 +13,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/admin', function () {
+    return File::get(public_path().'/index.html');
 });
+
+Route::get('/', function () {
+    return view('home');
+});
+Route::get('/marmergranit', function () {
+    return view('marmergranit');
+});
+
+Route::get('/besi', function () {
+    return view('besi');
+});
+
+Route::get('/aksesoris', function () {
+    return view('aksesoris');
+});
+
+Route::get('/portofolio', function () {
+    return view('portofolio');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+

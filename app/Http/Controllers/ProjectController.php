@@ -14,6 +14,13 @@ class ProjectController extends BaseController
     {
         return Project::all();
     }
+
+    function get(?int $id)
+    {
+        return Project::query()->find($id)->first();
+    }
+
+
     function save(Request $r)
     {
         $b = json_decode($r->getContent());

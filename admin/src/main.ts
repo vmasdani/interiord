@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import App from "./App.vue";
-import HelloWorldVue from "./components/HelloWorld.vue";
+// import HelloWorldVue from "./components/HelloWorld.vue";
 import { createRouter, createWebHashHistory } from "vue-router";
 import AdminSettingsVue from "./components/AdminSettings.vue";
 import ProductsVue from "./components/Products.vue";
