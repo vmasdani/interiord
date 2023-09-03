@@ -1,13 +1,34 @@
 #!/usr/bin/python3
 
+import json
 import subprocess
 import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("action")
+parser.add_argument("env")
 
 args = parser.parse_args()
 
+env_f= open('./config.json')
+env = json.loads(env_f.read())
+env_f.close()
+
+def replace(src, dst):
+    fsrc = open(src)
+    src = fsrc.read()
+    fsrc.close()
+
+    
+    for (k) in env[args.env]:
+        src = src.replace(f'#{k}', env[args.env][k])
+    
+    fdst = open(dst, 'w+')
+    dst =fdst.write(src)
+    fdst.close()
+
+
+replace('./.env.template','./.env')
 
 if args.action == "run":
     steps = [
