@@ -44,4 +44,14 @@ if args.action == "run":
         subprocess.run(s, cwd=cwd, shell=True)
         
 elif args.action == "build":
-    pass
+        steps = [
+            ("yarn build", "./admin"),
+            ("cp -r ./admin/dist/assets ./public", "./"),
+            ("cp -r ./admin/dist/vite.svg ./admin/dist/index.html ./public", "./"),
+            ("zip -r release.zip . -x /admin/* /.env", '.')
+        ]
+        # print(steps)
+        for s, cwd in steps:
+            print(s)
+            subprocess.run(s, cwd=cwd, shell=True)
+        
