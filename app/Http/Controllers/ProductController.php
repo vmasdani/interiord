@@ -19,6 +19,27 @@ class ProductController extends BaseController
         return Product::query()->find($id);
     }
 
+
+    function photo(?int $id)
+    {
+        return response()->file(storage_path() . '/photos/product_' . $id);
+    }
+
+    function sendPhoto(Request $r, ?int $id)
+    {
+        $content = json_decode($r->getContent());
+        $b64Photo = base64_decode($content->photo);
+
+        if (!file_exists(storage_path() . '/photos/product_' . $id)) {
+            touch(storage_path() . '/photos/product_' . $id);
+        }
+
+        $f = file_put_contents(storage_path() . '/photos/product_' . $id, $b64Photo);
+        // fwrite($f, $b64Photo);
+    }
+
+
+
     function save(Request $r)
     {
         $b = json_decode($r->getContent());

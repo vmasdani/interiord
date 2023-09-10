@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->text('name')->nullable();
             $table->text('type')->nullable();
-            $table->double('price_per_m2')->nullable();
+            $table->text('price_per_m2')->nullable();
             
             $table->text('t1')->nullable();
             $table->text('t23')->nullable();
@@ -27,7 +27,7 @@ return new class extends Migration
             $table->text('meja')->nullable();
             $table->text('fin')->nullable();
 
-            $table->double('price')->nullable();
+            $table->text('price')->nullable();
 
         });
     }

@@ -6,6 +6,9 @@ import { fetchProduct } from "../fetchers";
 const product = ref({}) as Ref<any>;
 const router = useRouter();
 
+const photo = ref({ photo: null as string | null });
+const fr = new FileReader();
+
 const handleSave = async () => {
     try {
         const resp = await fetch(`${window.location.origin}/api/products`, {
@@ -16,6 +19,20 @@ const handleSave = async () => {
 
         if (resp.status !== 200) {
             throw await resp.text();
+        }
+
+        if (photo.value.photo) {
+            await fetch(
+                `${window.location.origin}/api/products/${product?.value.id}/photo`,
+                {
+                    method: "post",
+                    headers: { "content-type": "application/json" },
+                    body: JSON.stringify({
+                        ...photo.value,
+                        photo: photo.value.photo.split("base64,")[1],
+                    }),
+                }
+            );
         }
 
         router.push("/products");
@@ -39,6 +56,8 @@ const fetchProductData = async () => {
 const handleInit = async () => {
     fetchProductData();
 };
+
+const windowx = window;
 
 handleInit();
 </script>
@@ -219,7 +238,29 @@ handleInit();
     <div>
         <small><strong>Photo</strong></small>
     </div>
-    <div>
-        <input type="file" />
+    <div v-if="product?.id">
+        <input
+            type="file"
+            @input="e=>{
+            if((e.target as HTMLInputElement).files?.[0]){
+
+                fr.readAsDataURL((e.target as HTMLInputElement).files?.[0] as File)
+
+                fr.onload=e=>{
+                    photo.photo=e.target?.result as string
+                }
+
+                fr.onerror=e=>{
+                    console.log(e)
+                }
+            }
+        }"
+        />
     </div>
+
+    <img :src="photo.photo ?? ''" />
+
+    <img
+        :src="`${windowx.location.origin}/api/products/${(route.params as any)?.id}/photo`"
+    />
 </template>
