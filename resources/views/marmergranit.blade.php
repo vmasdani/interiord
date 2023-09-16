@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div style="background-color:darkblue">
+    <div style="background-color:#22394a">
         <div class="container">
             <h4 class="text-light">Marmer & Granit</h4>
 

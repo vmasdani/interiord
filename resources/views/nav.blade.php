@@ -3,17 +3,20 @@
         <div class="w-100 d-flex justify-content-between">
             <div class="d-flex">
                 <div class="mx-2"><a href="{{ $data['adminsetting']['instagram_link'] }}" target="_blank">
-                        <small><strong>IG </strong></small>
+                        <img style="max-width: 25px" src="ig.png" />
                     </a> </div>
                 <div class="mx-2"><a href="{{ $data['adminsetting']['tokopedia_link'] }}" target="_blank">
-                        <small><strong>Toped </strong></small>
+                        <img style="max-width: 25px" src="toped.png" />
                     </a> </div>
                 <div class="mx-2"><a href="{{ $data['adminsetting']['whatsapp_number'] }}" target="_blank">
-                        <small><strong>WA </strong></small>
+                        <img style="max-width: 25px" src="wa.png" />
+
                     </a> </div>
             </div>
             <div>
-                <a class="navbar-brand" href="#">CENTRUME_ind</a>
+                <a class="navbar-brand" href="#">
+                    <img style="max-height: 45px" src="centrume.png" />
+                </a>
             </div>
 
         </div>
