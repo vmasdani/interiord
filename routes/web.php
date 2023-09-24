@@ -23,7 +23,11 @@ Route::get('/admin', function () {
 Route::get('/', function () {
     return view('home')
         ->with('data', [
-            'adminsetting' => Adminsetting::query()->first()
+            'adminsetting' => Adminsetting::query()->first(),
+            'projects' => Project::query()->get(),
+            'hot_projects' => Project::query()->whereRaw('is_hot = 1')->get(),
+
+
         ]);
 });
 Route::get('/marmergranit', function () {
