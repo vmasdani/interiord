@@ -9,16 +9,21 @@
 
 <body>
     <div style="background-color:#22394a">
-        <div class="p-3 d-flex" style="background-color: #d3d7db">
+        <div class="p-3 d-flex" style="background-image: url('/hotproject.jpeg');"">
             <div class="item-photo flex-grow-1">
                 <div>
                     <img style="max-height: 75px" src="centrume.png" />
                 </div>
-                <div>Jl. Pakujaya No.66, RT.2/RW.5 Paku Jaya, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15326
+                <div style="color:#22394a"><strong class="bg-light p-1 shadow shadow-md rounded">Jl. Pakujaya No.66,
+                        RT.2/RW.5 Paku Jaya, Kec. Serpong Utara, Kota
+                        Tangerang Selatan, Banten
+                        15326</strong>
                 </div>
 
-                <div class="my-3">Phone: 0877 7177 9430</div>
-                <div class="my-3">Email: Yusufsetiadi66@gmail.com</div>
+                <div style="color:#22394a" class="my-3"><strong class="bg-light p-1 shadow shadow-md rounded">Phone:
+                        0877 7177 9430</strong></div>
+                <div style="color:#22394a" class="my-3"><strong class="bg-light p-1 shadow shadow-md rounded">Email:
+                        Yusufsetiadi66@gmail.com</strong></div>
 
             </div>
             <div class="flex-grow-1">
@@ -39,9 +44,13 @@
         </div>
 
         <div class="my-3 text-light d-flex flex-column align-items-center justify-content-center">
-            <div><h4>C E N T R U M E</h4></div>
-            <div>Jl. Pakujaya No.66, RT.2/RW.5, Paku Jaya, Kec. Serpong Utara, Kota Tangerang Selatan, Banten 15326</div>
-            <div>Phone: 0877 7177 9430 | Email: Yusufsetiadi66@gmail.com</div>
+            <div>
+                <h4>C E N T R U M E</h4>
+            </div>
+            <div><strong>Jl. Pakujaya No.66, RT.2/RW.5, Paku Jaya, Kec. Serpong Utara, Kota Tangerang Selatan, Banten
+                    15326</strong>
+            </div>
+            <div><strong>Phone: 0877 7177 9430 | Email: Yusufsetiadi66@gmail.com</strong></div>
         </div>
 
         @include('bootstrapjs')
@@ -56,3 +65,4 @@
         }
     }
 </style>
+@include('font')

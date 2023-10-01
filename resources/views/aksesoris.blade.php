@@ -52,3 +52,5 @@
         }
     }
 </style>
+
+@include('font')

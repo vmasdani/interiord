@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light" style="position: sticky;  top:0">
     <div class="d-flex w-100 container-fluid">
         <div class="w-100 d-flex justify-content-between">
             <div class="d-flex">
@@ -13,12 +13,14 @@
 
                     </a> </div>
             </div>
-            <div>
+            <div class="d-flex justify-content-center">
                 <a class="navbar-brand" href="#">
                     <img style="max-height: 45px" src="centrume.png" />
                 </a>
             </div>
+            <div>
 
+            </div>
         </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -67,3 +69,4 @@
         </div>
     </div>
 </nav>
+@include('font')

@@ -64,3 +64,4 @@
 </body>
 
 </html>
+@include('font')

@@ -51,29 +51,38 @@
 
                 <div class="d-flex justify-content-center flex-wrap">
                     @for ($i = 0; $i < count($data['hot_projects']); $i++)
-
                         <div class="hot-projects-width m-3" style="cursor: pointer">
                             <a href="/portofolio">
 
-                            <div style=" background-color: grey; color: white">
-                                <img style="max-width: 100%"
-                                    src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />
-                            </div>
+                                <div style=" background-color: grey; color: white">
+                                    <img style="max-width: 100%"
+                                        src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />
+                                </div>
                             </a>
 
                         </div>
                     @endfor
                 </div>
 
-                <div class="d-flex align-items-center flex-wrap">
-                    <div class="flex-grow-1">
+                <div class="d-flex align-items-center justify-content-center flex-wrap">
+                    <div class="d-flex flex-column align-items-center justify-content-center  flex-grow-1">
                         <div style="background-color: #d3d7db" class="bg-light rounded rounded-md p-3"><strong>Why
                                 CENTRUME_ind?</strong></div>
+
+                        <div>
+                            <div>
+                                <img style="max-width: 400px" src="leftpic.png" />
+                            </div>
+                        </div>
                     </div>
                     <div class="p-3 d-flex align-items-center flex-wrap flex-grow-1">
                         <div class="why-centrume mx-1 text-light flex-grow-1">
                             <div
                                 class="d-flex flex-column align-items-center justify-content-center p-2 border border-light border-4 rounded my-2">
+
+                                <div>
+                                    <img style="max-width: 200px" src="professional.png" />
+                                </div>
                                 <div>
                                     <strong>Professional Team</strong>
                                 </div>
@@ -88,6 +97,10 @@
                             </div>
                             <div
                                 class="d-flex flex-column align-items-center justify-content-center p-2 border border-light border-4 rounded my-2">
+
+                                <div>
+                                    <img style="max-width: 200px" src="workshop.png" />
+                                </div>
                                 <div> <strong>We Have Our Own Workshop</strong>
                                 </div>
                                 <div>
@@ -105,6 +118,9 @@
                         <div class="why-centrume mx-1 text-light flex-grow-1">
                             <div
                                 class="d-flex flex-column align-items-center justify-content-center p-2 border border-light border-4 rounded">
+                                <div>
+                                    <img style="max-width: 200px" src="warranty.png" />
+                                </div>
                                 <div>
                                     <strong>Project Warranty</strong>
                                 </div>
@@ -172,3 +188,4 @@
         }
     }
 </style>
+@include('font')
