@@ -8,7 +8,7 @@
                 <div class="mx-2"><a href="{{ $data['adminsetting']['tokopedia_link'] }}" target="_blank">
                         <img style="max-width: 25px" src="toped.png" />
                     </a> </div>
-                <div class="mx-2"><a href="{{ $data['adminsetting']['whatsapp_number'] }}" target="_blank">
+                <div class="mx-2"><a href="https://wa.me/{{ $data['adminsetting']['whatsapp_number'] }}" target="_blank">
                         <img style="max-width: 25px" src="wa.png" />
 
                     </a> </div>

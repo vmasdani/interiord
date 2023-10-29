@@ -8,7 +8,7 @@
 </head>
 
 <body style="background-color:#22394a">
-    <a href="{{ $data['adminsetting']['whatsapp_number'] }}" target="_blank">
+    <a href="https://wa.me/{{ $data['adminsetting']['whatsapp_number'] }}" target="_blank">
 
         <div style="position: fixed; z-index: 2; bottom:15vh; right: 0"
             class="border border-secondary shadow shadow-md rounded rounded-lg bg-light d-flex justify-content-center align-items-center">
