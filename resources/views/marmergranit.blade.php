@@ -16,8 +16,8 @@
             <div class="d-flex flex-wrap">
                 @for ($i = 0; $i < count($data['products']); $i++)
                     <div class="m-4">
-                        <div class="item-photo" style=" background-color: grey; color: white; height: 20vh;">
-                            <img style="max-width: 100%" src="/api/products/{{ $data['products'][$i]?->id }}/photo" />
+                        <div class="item-photo" style="background-color: grey; color: white; height: 20vh; ">
+                            <img src="/api/products/{{ $data['products'][$i]?->id }}/photo" style="width: 100%; object-fit: cover; height:20vh" />
 
                         </div>
                         <div class="d-flex flex-column align-items-center justify-content-center bg-light">
