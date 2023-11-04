@@ -8,9 +8,11 @@
 </head>
 
 <body>
-    <div style="background-color:#22394a">
-        <div class="container">
-            <h4 class="text-light">Besi</h4>
+    <div style="background-color:#22394a; min-height: 100vh">
+    <h4 class="text-light p-2">Besi</h4>
+            <div style="border: 1px solid gold;"  ></div>
+                
+    <div class="container">
             <div>
                 @for ($i = 0; $i < count($data['products']); $i++)
                     <div class="d-flex m-3 bg-light border border-dark">

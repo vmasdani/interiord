@@ -8,10 +8,11 @@
 </head>
 
 <body>
-    <div style="background-color:#22394a">
+    <div style="background-color:#22394a; min-height: 100vh">
+    <h4 class="text-light p-2">Aksesoris</h4>
+            <div style="border: 1px solid gold;"  ></div>
         <div class="container">
-            <h4 class="text-light">Aksesoris</h4>
-
+           
 
             <div class="d-flex flex-wrap">
                 @for ($i = 0; $i < count($data['products']); $i++)
