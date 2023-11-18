@@ -175,5 +175,50 @@ handleInit();
 
     <img :src="photo.photo ?? ''" />
 
-    <img :src="`${windowx.location.origin}/api/projects/${(route.params as any)?.id}/photo`" />
+    <img
+        :src="`${windowx.location.origin}/api/projects/${(route.params as any)?.id}/photo`"
+    />
+
+    <div>
+        <small><strong>Multiple Photos</strong></small>
+    </div>
+
+    <div v-if="project?.id">
+        <input
+            type="file"
+            @input="e=>{
+            if((e.target as HTMLInputElement).files?.[0]){
+
+                fr.readAsDataURL((e.target as HTMLInputElement).files?.[0] as File)
+
+                fr.onload=e=>{
+                    project?.project_photos?.push({photo: (e.target?.result as string)})
+                    
+                }
+
+                fr.onerror=e=>{
+                    console.log(e)
+                }
+            }
+        }"
+        />
+    </div>
+    <div class="d-flex flex-wrap">
+        <div v-for="p in project?.project_photos ?? []">
+            <div class="d-flex border border-dark m-3" style="width: 25vw">
+                <img
+                    style="width: 25vw"
+                    :src="`${windowx.location.origin}/api/project_photos/${(p)?.id}/photo`"
+                />
+                <img style="width: 25vw" :src="p.photo ?? ''" />
+            </div>
+            <div>
+                <button class="btn btn-sm btn-danger" @click="() => {
+
+                }">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
 </template>

@@ -54,7 +54,11 @@ Route::get('/aksesoris', function () {
 Route::get('/portofolio', function () {
     return view('portofolio')->with('data', [
         'adminsetting' => Adminsetting::query()->first(),
-        'projects' => Project::query()->get()
+        'projects' => Project::all()->map(function (Project $p) {
+            $p->projectPhotos;
+
+            return $p;
+        })
 
     ]);
 });

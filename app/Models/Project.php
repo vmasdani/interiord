@@ -45,4 +45,8 @@ class Project extends Model
         'is_hot'
     ];
 
+    public function projectPhotos()
+    {
+        return $this->hasMany(ProjectPhoto::class);
+    }
 }

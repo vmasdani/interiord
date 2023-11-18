@@ -32,6 +32,8 @@ Route::get('/projects/{id}', [ProjectController::class, 'get']);
 Route::post('/projects', [ProjectController::class, 'save']);
 Route::get('/projects/{id}/photo', [ProjectController::class, 'photo']);
 Route::post('/projects/{id}/photo', [ProjectController::class, 'sendPhoto']);
+Route::get('/project_photos/{id}/photo', [ProjectController::class, 'projectPhoto']);
+
 
 Route::get('/adminsetting', [AdminsettingController::class, 'first']);
 Route::post('/adminsetting', [AdminsettingController::class, 'save']);

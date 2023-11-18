@@ -43,6 +43,10 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereUpdatedAt($value)
  * @property string|null $one_set
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereOneSet($value)
+ * @property int|null $sequence
+ * @property int|null $rating
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereRating($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereSequence($value)
  * @mixin \Eloquent
  */
 class Product extends Model
