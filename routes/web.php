@@ -3,6 +3,7 @@
 use App\Models\Adminsetting;
 use App\Models\Product;
 use App\Models\Project;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,34 +21,73 @@ Route::get('/admin', function () {
     return File::get(public_path() . '/index.html');
 });
 
-Route::get('/', function () {
+Route::get('/', function (Request $r) {
     return view('home')
         ->with('data', [
             'adminsetting' => Adminsetting::query()->first(),
             'projects' => Project::query()->get(),
             'hot_projects' => Project::query()->whereRaw('is_hot = 1')->get(),
 
-
         ]);
 });
-Route::get('/marmergranit', function () {
+Route::get('/marmergranit', function (Request $r) {
+    $sortBy = $r->query('sort_by')  ?? 'recommended';
+    $products = Product::query()->where('type', '=', 'Marmer Granit');
+
+    if ($sortBy == 'recommended') {
+        $products = $products->orderBy('recommended_order', 'DESC');
+    } else if ($sortBy == 'bestseller') {
+        $products = $products->orderBy('bestseller_order', 'DESC');
+    } else {
+        $products = $products->orderBy('recommended_order', 'DESC');
+    }
+
+    $products = $products->get();
     return view('marmergranit')->with('data', [
         'adminsetting' => Adminsetting::query()->first(),
-        'products' => Product::query()->where('type', '=', 'Marmer Granit')->get()
+        'products' => $products,
+        'sort_by' => $sortBy
     ]);
 });
 
-Route::get('/besi', function () {
+Route::get('/besi', function (Request $r) {
+    $sortBy = $r->query('sort_by') ?? 'recommended';
+    $products = Product::query()->where('type', '=', 'Besi');
+
+    if ($sortBy == 'recommended') {
+        $products = $products->orderBy('recommended_order', 'DESC');
+    } else if ($sortBy == 'bestseller') {
+        $products = $products->orderBy('bestseller_order', 'DESC');
+    } else {
+        $products = $products->orderBy('recommended_order', 'DESC');
+    }
+
+    $products = $products->get();
     return view('besi')->with('data', [
         'adminsetting' => Adminsetting::query()->first(),
-        'products' => Product::query()->where('type', '=', 'Besi')->get()
+        'products' => $products,
+        'sort_by' => $sortBy
     ]);
 });
 
-Route::get('/aksesoris', function () {
+Route::get('/aksesoris', function (Request $r) {
+    $sortBy = $r->query('sort_by')  ?? 'recommended';
+    $products = Product::query()->where('type', '=', 'Aksesoris');
+
+    if ($sortBy == 'recommended') {
+        $products = $products->orderBy('recommended_order', 'DESC');
+    } else if ($sortBy == 'bestseller') {
+        $products = $products->orderBy('bestseller_order', 'DESC');
+    } else {
+        $products = $products->orderBy('recommended_order', 'DESC');
+    }
+
+    $products = $products->get();
+
     return view('aksesoris')->with('data', [
         'adminsetting' => Adminsetting::query()->first(),
-        'products' => Product::query()->where('type', '=', 'Aksesoris')->get()
+        'products' => $products,
+        'sort_by' => $sortBy
     ]);
 });
 

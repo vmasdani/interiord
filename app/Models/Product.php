@@ -47,6 +47,10 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int|null $rating
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereRating($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Product whereSequence($value)
+ * @property int|null $bestseller_order
+ * @property int|null $recommended_order
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereBestsellerOrder($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Product whereRecommendedOrder($value)
  * @mixin \Eloquent
  */
 class Product extends Model
@@ -63,8 +67,8 @@ class Product extends Model
         'meja',
         'fin',
         'price',
-        'one_set'
-        
+        'one_set',
+        'bestseller_order',
+        'recommended_order'
     ];
-
 }

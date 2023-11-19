@@ -9,33 +9,57 @@
 
 <body>
     <div style="background-color:#22394a; min-height: 100vh">
-    <h4 class="text-light p-2">Aksesoris</h4>
-            <div style="border: 1px solid gold;"  ></div>
-        <div class="container">
-           
+        <div class="d-flex p-2">
 
-            <div class="d-flex flex-wrap">
-                @for ($i = 0; $i < count($data['products']); $i++)
-                    <div class="m-4">
-                        <div class="item-photo" style=" background-color: grey; color: white; height: 20vh;">
-                            <img style="max-width: 100%" src="/api/products/{{ $data['products'][$i]?->id }}/photo" />
-                        </div>
-                        <div class="d-flex flex-column align-items-center justify-content-center bg-light">
-                            <div class="bg-light px-2">
-                                <strong>{{ $data['products'][$i]?->name }}</strong>
-                            </div>
-                            <div class="bg-light px-2">
-                                <strong><a href="">Customize your needs</a></strong>
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                    {{-- <div>abc</div> --}}
-                @endfor
+            <div class="flex-grow-1">
+                <h4 class="text-light">Aksesoris</h4>
             </div>
 
+            <div class="flex-grow-1 d-flex justify-content-center">
+                <h4 class="text-light">Product</h4>
+            </div>
+
+            <div class="d-flex flex-grow-1">
+                <div>
+                    <h4 class="text-light">Sort by: </h4>
+                </div>
+                <div>
+                    <select id="sortselect" oninput="{ 
+            window.location=`/aksesoris?sort_by=${this.value}`
+         }">
+                        <option value="recommended"> Recommended</option>
+                        <option value="bestseller">Best Seller</option>
+                    </select>
+
+                </div>
+
+            </div>
         </div>
+        <div style="border: 1px solid gold;"></div>
+        <div class="container">
+
+
+            <div class="d-flex flex-wrap">
+                @for ($i = 0; $i < count($data['products']); $i++) <div class="m-4">
+                    <div class="item-photo" style=" background-color: grey; color: white; height: 20vh;">
+                        <img style="max-width: 100%" src="/api/products/{{ $data['products'][$i]?->id }}/photo" />
+                    </div>
+                    <div class="d-flex flex-column align-items-center justify-content-center bg-light">
+                        <div class="bg-light px-2">
+                            <strong>{{ $data['products'][$i]?->name }}</strong>
+                        </div>
+                        <div class="bg-light px-2">
+                            <strong><a href="">Customize your needs</a></strong>
+                        </div>
+                    </div>
+
+
+            </div>
+            {{-- <div>abc</div> --}}
+            @endfor
+        </div>
+
+    </div>
 
 
 
@@ -53,5 +77,12 @@
         }
     }
 </style>
+
+<script>
+    var urlParams = new URLSearchParams(window.location.search);
+    let queryString = urlParams.get('sort_by');
+
+    document.getElementById("sortselect").querySelector("option[value='" + queryString + "']").selected = true;
+</script>
 
 @include('font')

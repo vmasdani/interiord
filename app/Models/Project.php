@@ -31,6 +31,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereUpdatedAt($value)
  * @property int|null $is_hot
  * @method static \Illuminate\Database\Eloquent\Builder|Project whereIsHot($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProjectPhoto> $projectPhotos
+ * @property-read int|null $project_photos_count
  * @mixin \Eloquent
  */
 class Project extends Model

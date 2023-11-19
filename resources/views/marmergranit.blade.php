@@ -19,12 +19,24 @@
                 <h4 class="text-light">Product</h4>
             </div>
 
-            <div class="flex-grow-1">
-                <h4 class="text-light">Sort by:</h4>
+            <div class="d-flex flex-grow-1">
+                <div>
+                    <h4 class="text-light">Sort by: </h4>
+                </div>
+                <div>
+                    <select id="sortselect" oninput="{ 
+                        window.location=`/marmergranit?sort_by=${this.value}`
+                     }">
+                        <option value="recommended"> Recommended</option>
+                        <option value="bestseller">Best Seller</option>
+                    </select>
+
+                </div>
+
             </div>
         </div>
 
-        <div style="border: 1px solid gold;"  ></div>
+        <div style="border: 1px solid gold;"></div>
 
         <div class="container">
 
@@ -68,4 +80,14 @@
         }
     }
 </style>
+
+
+<script>
+    var urlParams = new URLSearchParams(window.location.search);
+    let queryString = urlParams.get('sort_by');
+
+    document.getElementById("sortselect").querySelector("option[value='" + queryString + "']").selected = true;
+</script>
+
+
 @include('font')

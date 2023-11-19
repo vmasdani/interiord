@@ -234,6 +234,32 @@ handleInit();
             class="form-control form-control-sm"
         />
     </div>
+    <div>
+        <small><strong>Bestseller Order</strong></small>
+    </div>
+    <div>
+        <input
+            :value="product?.bestseller_order"
+            @input="e=>{
+                product.bestseller_order = (e.target as HTMLInputElement).value
+            }"
+            placeholder="bestseller_order..."
+            class="form-control form-control-sm"
+        />
+    </div>
+    <div>
+        <small><strong>Recommended Order</strong></small>
+    </div>
+    <div>
+        <input
+            :value="product?.recommended_order"
+            @input="e=>{
+                product.recommended_order = (e.target as HTMLInputElement).value
+            }"
+            placeholder="recommended_order..."
+            class="form-control form-control-sm"
+        />
+    </div>
 
     <div>
         <small><strong>Photo</strong></small>
