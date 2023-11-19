@@ -48,6 +48,9 @@ handleInit();
                         'Meja',
                         'Fin',
                         'Price',
+                        'Recommended Ord',
+                        'Bestseller Ord',
+
                         'Action',
                     ]"
                     style="position: sticky; top: 0"
@@ -69,6 +72,9 @@ handleInit();
                 <td class="border border-dark p-0 m-0">{{ p?.meja }}</td>
                 <td class="border border-dark p-0 m-0">{{ p?.fin }}</td>
                 <td class="border border-dark p-0 m-0">{{ p?.price }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.recommended_order }}</td>
+                <td class="border border-dark p-0 m-0">{{ p?.bestseller_order }}</td>
+                
                 <td class="border border-dark p-0 m-0">
                     <a class="p-0 m-0" :href="`#/products/${p?.id}`">
                         <div class="p-0 m-0">
