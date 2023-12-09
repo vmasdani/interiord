@@ -51,7 +51,7 @@
                     <a href="/portofolio">
 
                         <div class="d-flex justify-content-center" style=" color: white; position: relative; object-fit: cover;">
-                            <img style="max-width: 100%; height: 60vh; object-fit: cover;" src="/api/projects/{{ $data['projects'][$i]?->id }}/photo"/>
+                            <img style="max-width: 100%; height: 60vh; object-fit: cover;" src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />
                             <button class="btn btn-sm btn-primary" style="position: absolute; bottom: 10px; left: 40%; background-color:#22394a; color: gold;">View More</button>
                         </div>
                     </a>
@@ -133,6 +133,148 @@
     </div>
     </div>
 
+    </div>
+
+    <!-- Portofolio Page -->
+    <div id="portofolio-page">
+        <input style="display: none;" id="data" value="{{ $data['projects'] }}" />
+        <dialog id="main-dialog" style="min-width: 75vw">
+            <div>
+                <div>
+                    <button class="btn btn-sm btn-danger" onclick="(() => {
+                    document.getElementById('main-dialog').removeAttribute('open');
+                })()">Close</button>
+                </div>
+                <div style="background-color:#22394a" class="p-1">
+                    <div id="img-detail" class="d-flex justify-content-center"></div>
+                    <div id="img-detail-photos" class="d-flex justify-content-center"></div>
+                    <div class="text-light" id="project-detail">Project: </div>
+                    <div class="text-light" id="location-detail">Location: </div>
+                    <div class="text-light" id="material-detail">Material: </div>
+                    <div class="text-light" id="area-detail">Area: </div>
+                </div>
+
+
+            </div>
+        </dialog>
+        <div style="background-color:#22394a; min-height: 100vh">
+            <h4 class="text-light p-2">Our Projects</h4>
+            <div style="border: 1px solid gold;"></div>
+            <div class="container">
+
+
+                <div class="d-flex flex-wrap">
+                    @for ($i = 0; $i < count($data['projects']); $i++) <div class="m-4">
+                        <div class="item-photo" style=" background-color: grey; color: white;width: 25vw; height: 20vh;">
+                            <img style="max-width: 100%" src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />
+                        </div>
+                        <div class="d-flex flex-column align-items-center justify-content-center bg-light">
+                            <div class="p-1"><button class="btn btn-sm" style="background-color:#22394a; color: gold" onclick="(()=> {
+
+                                        const d = JSON.parse (document.getElementById('data').value)
+                                        const index = {{$i}};
+
+                                        document.getElementById('main-dialog').setAttribute('open','');
+                                        document.getElementById('img-detail').innerHTML= `<img style='max-width: 75vw; max-height: 50vh' src='/api/projects/{{ $data['projects'][$i]?->id }}/photo' />`;
+                                        
+                                        document.getElementById('img-detail-photos').innerHTML= 
+                                            `<div class='d-flex'>
+                                                ${d[index]?.project_photos?.map(p=>{return (
+                                                    `<div class='m-2'>
+                                                        <div class='item-photo' style='background-color: grey; color: white;width: 25vw; height: 20vh;'>
+                                                            <img style='max-width: 100%' src='/api/project_photos/${p?.id}/photo' />
+                                                        </div>
+                                                    </div>`
+                                                )}).join('')}
+                                            </div>`;
+                                        document.getElementById('project-detail').innerHTML= 'Project: {{$data['projects'][$i]?->name}}';
+                                        document.getElementById('location-detail').innerHTML= 'Location: {{$data['projects'][$i]?->location }}';
+                                        document.getElementById('material-detail').innerHTML= 'Material: {{$data['projects'][$i]?->material}}';
+                                        document.getElementById('area-detail').innerHTML= 'Area: {{$data['projects'][$i]?->area}}';
+
+                                      
+                                        
+                                                                                
+
+                                    })()">View
+                                    More</button></div>
+                            {{-- <div>
+                                <strong>Project: {{ $data['projects'][$i]?->name }}</strong>
+                        </div>
+                        <div>
+                            <strong>Location: {{ $data['projects'][$i]?->location }}</strong>
+                        </div>
+                        <div>
+                            <strong>Mat: {{ $data['projects'][$i]?->material }}</strong>
+                        </div> --}}
+
+                </div>
+
+            </div>
+            @endfor
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+    <!-- Contact Page -->
+
+    <div id="contact-page">
+        <div>
+            <input id="data" style="display: none" value="{{ json_encode( $data) }}" />
+            <div class="p-3 d-flex" style="background-image: url('/hotproject.jpeg'); height: 100vh;"">
+            <div class=" item-photo flex-grow-1">
+                <div>
+                    <img style="max-height: 75px" src="centrume.png" />
+                </div>
+                <div style="color:#22394a"><strong class="p-1">Jl. Pakujaya No.66,
+                        RT.2/RW.5 Paku Jaya, Kec. Serpong Utara, Kota
+                        Tangerang Selatan, Banten
+                        15326</strong>
+                </div>
+
+                <div style="color:#22394a" class="my-3"><strong class="p-1">Phone:
+                        0877 7177 9430</strong></div>
+                <div style="color:#22394a" class="my-3"><strong class="p-1" class="p-1">Email:
+                        Yusufsetiadi66@gmail.com</strong></div>
+
+            </div>
+            <div class="flex-grow-1">
+
+                <div class="d-flex my-1 rounded" style="background: rgba(0,0,0,0.5); background-color: lightgrey; opacity: 0.6">
+                    <div class="px-1"><strong>Name</strong></div><input oninput="handleChangeName(this)" style="background-color: transparent;" placeholder="..." class="form-control form-control-sm" />
+                </div>
+                <div class="d-flex my-1 rounded" style="background: rgba(0,0,0,0.5); background-color: lightgrey; opacity: 0.6">
+                    <div class="px-1"><strong>Email</strong></div>
+                    <input oninput="handleChangeEmail(this)" style="background-color: transparent;" placeholder="..." class="form-control form-control-sm" />
+                </div>
+
+                <div class="d-flex my-1 rounded" style="background: rgba(0,0,0,0.5); background-color: lightgrey; opacity: 0.6">
+                    <div class="px-1"><strong>Phone</strong></div>
+                    <input oninput="handleChangePhone(this)" style="background-color: transparent;" placeholder="..." class="form-control form-control-sm" />
+                </div>
+
+                <div class="d-flex my-1 rounded" style="background: rgba(0,0,0,0.5); background-color: lightgrey; opacity: 0.6">
+                    <div class="px-1"><strong>Message</strong></div>
+                    <input oninput="handleChangeMessage(this)" style="background-color: transparent;" placeholder="..." class="form-control form-control-sm" />
+                </div>
+
+                <div class="d-flex"><button class="btn text-light" style="background-color:#22394a" onclick="handleSubmit()">Send Message</button></div>
+            </div>
+
+        </div>
+
+
+        <div class="text-light d-flex flex-column align-items-center justify-content-center">
+            <div>
+                <h4>C E N T R U M E</h4>
+            </div>
+            <div><strong>Jl. Pakujaya No.66, RT.2/RW.5, Paku Jaya, Kec. Serpong Utara, Kota Tangerang Selatan, Banten
+                    15326</strong>
+            </div>
+            <div><strong>Phone: 0877 7177 9430 | Email: Yusufsetiadi66@gmail.com</strong></div>
+        </div>
     </div>
 
     @include('bootstrapjs')

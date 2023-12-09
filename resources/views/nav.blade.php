@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-light" style="position: sticky;  top:0">
+<nav class="navbar navbar-expand-lg bg-light" style="position: sticky;  top:0; z-index: 100;">
     <div class="d-flex w-100 container-fluid">
         <div class="w-100 d-flex justify-content-between">
             <div class="d-flex">
@@ -23,8 +23,7 @@
             </div>
         </div>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -40,8 +39,7 @@
                     <a class="nav-link" href="#">Link</a>
                 </li> --}}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Product
                         </a>
                         <ul class="dropdown-menu">
@@ -54,10 +52,10 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/portofolio">Portofolio</a>
+                        <a class="nav-link" aria-current="page" href="/#portofolio-page">Portofolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/contact">Contact</a>
+                        <a class="nav-link" aria-current="page" href="/#contact-page">Contact</a>
                     </li>
                     {{-- <li class="nav-item">
                     <a class="nav-link disabled">Disabled</a>
