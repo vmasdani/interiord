@@ -25,7 +25,11 @@ Route::get('/', function (Request $r) {
     return view('home')
         ->with('data', [
             'adminsetting' => Adminsetting::query()->first(),
-            'projects' => Project::query()->get(),
+            'projects' => Project::all()->map(function (Project $p) {
+                $p->projectPhotos;
+
+                return $p;
+            }),
             'hot_projects' => Project::query()->whereRaw('is_hot = 1')->get(),
 
         ]);
