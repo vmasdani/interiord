@@ -91,7 +91,7 @@
                                     ${d[index]?.project_photos?.map(p=>{return (
                                         `<div class='m-2'>
                                             <div class='item-photo' style='background-color: grey; color: white;width: 25vw; height: 20vh;'>
-                                                <img style='max-width: 100%' src='/api/project_photos/${p?.id}/photo' />
+                                                <img style='max-width: 100%; max-height: 20vh' src='/api/project_photos/${p?.id}/photo' />
                                             </div>
                                         </div>`
                                     )}).join('')}
@@ -217,7 +217,7 @@
                                                 ${d[index]?.project_photos?.map(p=>{return (
                                                     `<div class='m-2'>
                                                         <div class='item-photo' style='background-color: grey; color: white;width: 25vw; height: 20vh;'>
-                                                            <img style='max-width: 100%' src='/api/project_photos/${p?.id}/photo' />
+                                                            <img style='width: 100%; max-height: 20vh' src='/api/project_photos/${p?.id}/photo' />
                                                         </div>
                                                     </div>`
                                                 )}).join('')}
