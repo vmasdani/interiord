@@ -2,6 +2,7 @@
 
 use App\Models\Adminsetting;
 use App\Models\Product;
+use App\Models\ProductionProcessPhoto;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::get('/', function (Request $r) {
                 return $p;
             }),
             'hot_projects' => Project::query()->whereRaw('is_hot = 1')->get(),
+            'production_process_photos' => ProductionProcessPhoto::all()
 
         ]);
 });

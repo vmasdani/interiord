@@ -11,6 +11,7 @@ import ProductsVue from "./components/Products.vue";
 import ProjectVue from "./components/Project.vue";
 import ProductDetailVue from "./components/ProductDetail.vue";
 import ProjectDetailVue from "./components/ProjectDetail.vue";
+import ProductionProcessPhotoVue from "./components/ProductionProcessPhoto.vue";
 
 interface IAppContext {
     apiKey?: string | null;
@@ -23,6 +24,7 @@ const routes = [
 
     { path: "/projects", component: ProjectVue },
     { path: "/projects/:id", component: ProjectDetailVue },
+    { path: "/productionprocess", component: ProductionProcessPhotoVue },
 ];
 
 const router = createRouter({

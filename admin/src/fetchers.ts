@@ -23,6 +23,19 @@ export const fetchProjects = async () => {
         return [];
     }
 };
+export const fetchProductionProcessPhotos = async () => {
+    try {
+        const resp = await fetch(`${window.location.origin}/api/productionprocessphotos`);
+
+        if (resp.status !== 200) {
+            throw await resp.text();
+        }
+        return await resp.json();
+    } catch (e) {
+        return [];
+    }
+};
+
 export const fetchProject = async (params?: { id?: any }) => {
     try {
         const resp = await fetch(

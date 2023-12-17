@@ -7,7 +7,33 @@
 
 </head>
 
-<body style="background-color:#22394a">
+<body style="background-color:#22394a" >
+    <dialog  id="main-dialog" style="min-width: 75vw; position: sticky; top: 20vh; z-index: 1; opacity: 0.95" class="bg-light">
+        <div>
+            <div>
+                <button class="btn btn-sm btn-danger" onclick="(() => {
+                    document.getElementById('main-dialog').removeAttribute('open');
+                })()">Close</button>
+            </div>
+
+
+            <div class="p-1 bg-light">
+                <div id="img-detail" class="d-flex justify-content-center"></div>
+                <div id="img-detail-photos" class="d-flex justify-content-center"></div>
+
+                <div style="border: 1.5px solid gold;"></div>
+
+
+                <div id="project-detail">Project: </div>
+                <div id="location-detail">Location: </div>
+                <div id="material-detail">Material: </div>
+                <div id="area-detail">Area: </div>
+            </div>
+
+
+        </div>
+    </dialog>
+
     <a href="https://wa.me/{{ $data['adminsetting']['whatsapp_number'] }}" target="_blank">
 
         <div style="position: fixed; z-index: 2; bottom:15vh; right: 0" class="border border-secondary shadow shadow-md rounded rounded-lg bg-light d-flex justify-content-center align-items-center">
@@ -30,9 +56,9 @@
                 </div>
 
                 <div class="layout-flex-desktop-carousel flex-grow-1 overflow-auto halfscrollable">
-                    @for ($i = 0; $i < count($data['projects']); $i++) <div class="m-4">
+                    @for ($i = 0; $i < count($data['production_process_photos']); $i++) <div class="m-4">
                         <div class="item-photo" style=" background-color: grey; color: white">
-                            <img style="max-width: 100%" src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />
+                            <img style="width: 100%; max-height: 20vh;" src="/api/prod_process_photos_photo/{{ $data['production_process_photos'][$i]?->id }}" />
                         </div>
                 </div>
                 @endfor
@@ -48,13 +74,40 @@
 
             <div class="d-flex justify-content-center flex-wrap">
                 @for ($i = 0; $i < count($data['hot_projects']); $i++) <div class="hot-projects-width m-3" style="cursor: pointer">
-                    <a href="/portofolio">
+                    <!-- <a href="/portofolio"> -->
 
-                        <div class="d-flex justify-content-center" style=" color: white; position: relative; object-fit: cover;">
-                            <img style="max-width: 100%; height: 60vh; object-fit: cover;" src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />
-                            <button class="btn btn-sm btn-primary" style="position: absolute; bottom: 10px; left: 40%; background-color:#22394a; color: gold;">View More</button>
-                        </div>
-                    </a>
+                    <div class="d-flex justify-content-center" style=" color: white; position: relative; object-fit: cover;">
+                        <img style="max-width: 100%; height: 60vh; object-fit: cover;" src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />
+                        <button class="btn btn-sm btn-primary" style="position: absolute; bottom: 10px; left: 40%; background-color:#22394a; color: gold;" onclick="(()=> {
+
+                            const d = JSON.parse (document.getElementById('data').value)
+                            const index = {{$i}};
+
+                            document.getElementById('main-dialog').setAttribute('open','');
+                            // document.getElementById('img-detail').innerHTML= `<img style='max-width: 75vw; max-height: 50vh' src='/api/projects/{{ $data['projects'][$i]?->id }}/photo' />`;
+
+                            document.getElementById('img-detail-photos').innerHTML= 
+                                `<div class='d-flex'>
+                                    ${d[index]?.project_photos?.map(p=>{return (
+                                        `<div class='m-2'>
+                                            <div class='item-photo' style='background-color: grey; color: white;width: 25vw; height: 20vh;'>
+                                                <img style='max-width: 100%' src='/api/project_photos/${p?.id}/photo' />
+                                            </div>
+                                        </div>`
+                                    )}).join('')}
+                                </div>`;
+                            document.getElementById('project-detail').innerHTML= 'Project: {{$data['projects'][$i]?->name}}';
+                            document.getElementById('location-detail').innerHTML= 'Location: {{$data['projects'][$i]?->location }}';
+                            document.getElementById('material-detail').innerHTML= 'Material: {{$data['projects'][$i]?->material}}';
+                            document.getElementById('area-detail').innerHTML= 'Area: {{$data['projects'][$i]?->area}}';
+
+
+
+                                                                    
+
+                            })()">View More</button>
+                    </div>
+                    <!-- </a> -->
 
             </div>
             @endfor
@@ -138,25 +191,7 @@
     <!-- Portofolio Page -->
     <div id="portofolio-page">
         <input style="display: none;" id="data" value="{{ $data['projects'] }}" />
-        <dialog id="main-dialog" style="min-width: 75vw">
-            <div>
-                <div>
-                    <button class="btn btn-sm btn-danger" onclick="(() => {
-                    document.getElementById('main-dialog').removeAttribute('open');
-                })()">Close</button>
-                </div>
-                <div style="background-color:#22394a" class="p-1">
-                    <div id="img-detail" class="d-flex justify-content-center"></div>
-                    <div id="img-detail-photos" class="d-flex justify-content-center"></div>
-                    <div class="text-light" id="project-detail">Project: </div>
-                    <div class="text-light" id="location-detail">Location: </div>
-                    <div class="text-light" id="material-detail">Material: </div>
-                    <div class="text-light" id="area-detail">Area: </div>
-                </div>
 
-
-            </div>
-        </dialog>
         <div style="background-color:#22394a; min-height: 100vh">
             <h4 class="text-light p-2">Our Projects</h4>
             <div style="border: 1px solid gold;"></div>
@@ -166,7 +201,7 @@
                 <div class="d-flex flex-wrap">
                     @for ($i = 0; $i < count($data['projects']); $i++) <div class="m-4">
                         <div class="item-photo" style=" background-color: grey; color: white;width: 25vw; height: 20vh;">
-                            <img style="max-width: 100%" src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />
+                            <img style="height: 20vh; width: 100%;" src="/api/projects/{{ $data['projects'][$i]?->id }}/photo" />a
                         </div>
                         <div class="d-flex flex-column align-items-center justify-content-center bg-light">
                             <div class="p-1"><button class="btn btn-sm" style="background-color:#22394a; color: gold" onclick="(()=> {
@@ -175,7 +210,7 @@
                                         const index = {{$i}};
 
                                         document.getElementById('main-dialog').setAttribute('open','');
-                                        document.getElementById('img-detail').innerHTML= `<img style='max-width: 75vw; max-height: 50vh' src='/api/projects/{{ $data['projects'][$i]?->id }}/photo' />`;
+                                        // document.getElementById('img-detail').innerHTML= `<img style='max-width: 75vw; max-height: 50vh' src='/api/projects/{{ $data['projects'][$i]?->id }}/photo' />`;
                                         
                                         document.getElementById('img-detail-photos').innerHTML= 
                                             `<div class='d-flex'>

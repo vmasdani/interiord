@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminsettingController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductionProcessPhotoController;
 use App\Http\Controllers\ProjectController;
+use App\Models\ProductionProcessPhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,10 @@ Route::post('/projects', [ProjectController::class, 'save']);
 Route::get('/projects/{id}/photo', [ProjectController::class, 'photo']);
 Route::post('/projects/{id}/photo', [ProjectController::class, 'sendPhoto']);
 Route::get('/project_photos/{id}/photo', [ProjectController::class, 'projectPhoto']);
+
+Route::get('/productionprocessphotos', [ProductionProcessPhotoController::class, 'all']);
+Route::post('/productionprocessphotos-save-bulk', [ProductionProcessPhotoController::class, 'save']);
+Route::get('/prod_process_photos_photo/{id}', [ProductionProcessPhotoController::class, 'prodProcessPhoto']);
 
 
 Route::get('/adminsetting', [AdminsettingController::class, 'first']);

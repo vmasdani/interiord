@@ -34,6 +34,10 @@ const localStoragex = localStorage;
                     <li class="nav-item">
                         <a class="nav-link" href="#/products">Products</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#/productionprocess">Production Process</a>
+                    </li>
+                    
                     
                     <!-- <li class="nav-item dropdown">
                         <a
