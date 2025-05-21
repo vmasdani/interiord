@@ -43,7 +43,8 @@
                             Product
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/marmergranit">Marmer & Granit</a></li>
+                            <li><a class="dropdown-item" href="/marmer">Marmer</a></li>
+                            <li><a class="dropdown-item" href="/granit">Granit</a></li>
                             <li><a class="dropdown-item" href="/besi">Besi</a></li>
                             {{-- <li>
                             <hr class="dropdown-divider">

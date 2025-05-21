@@ -12,7 +12,7 @@
         <div class="d-flex p-2">
 
             <div class="flex-grow-1">
-                <h4 class="text-light">Marmer & Granit</h4>
+                <h4 class="text-light">Marmer</h4>
             </div>
 
             <div class="flex-grow-1 d-flex justify-content-center">
@@ -21,17 +21,19 @@
 
             <div class="d-flex flex-grow-1">
                 <div>
-                    <h4 class="text-light">Sort by: </h4>
+                    <h4 class="text-light">Search: </h4>
                 </div>
-                <div>
+
+                <div><input class="form-control form-control-sm" id="qsearch" placeholder="Search..." /></div>
+                <!-- <div>
                     <select id="sortselect" oninput="{ 
-                        window.location=`/marmergranit?sort_by=${this.value}`
+                        window.location=`/marmer?sort_by=${this.value}`
                      }">
                         <option value="recommended"> Recommended</option>
                         <option value="bestseller">Best Seller</option>
                     </select>
 
-                </div>
+                </div> -->
 
             </div>
         </div>
@@ -41,10 +43,9 @@
         <div class="container">
 
             <div class="d-flex flex-wrap">
-                @for ($i = 0; $i < count($data['products']); $i++) <div class="m-4">
+                @for ($i = 0; $i < count($data['products']); $i++) <div class="m-4 itemlist">
                     <div class="item-photo" style="background-color: grey; color: white; height: 20vh; ">
                         <img src="/api/products/{{ $data['products'][$i]?->id }}/photo" style="width: 100%; object-fit: cover; height:20vh" />
-
                     </div>
                     <div class="d-flex flex-column align-items-center justify-content-center bg-light">
                         <div class="bg-light px-2">
@@ -79,6 +80,15 @@
             width: 17vw !important;
         }
     }
+
+    /* Mobile screens (less than 768px) */
+    @media only screen and (max-width: 767px) {
+        .item-photo {
+            width: 30vw !important;
+            /* Example: Make it full width on mobile */
+            /* Or you can set a specific width, e.g., width: 80vw; */
+        }
+    }
 </style>
 
 
@@ -86,7 +96,22 @@
     var urlParams = new URLSearchParams(window.location.search);
     let queryString = urlParams.get('sort_by');
 
-    document.getElementById("sortselect").querySelector("option[value='" + queryString + "']").selected = true;
+    document.getElementById('qsearch').addEventListener('input', e => {
+        console.log(document.getElementsByClassName('itemlist'), e?.target?.value)
+
+        document.querySelectorAll('.itemlist').forEach(i => {
+            const textc = i.children?.[1]?.children?.[0]?.textContent.trim().toLowerCase()
+
+            if (textc.includes(e.target?.value ?? '')) {
+                i.style.display = 'block'
+            } else {
+                i.style.display = 'none'
+            }
+        })
+
+    })
+
+    // document.getElementById("sortselect").querySelector("option[value='" + queryString + "']").selected = true;
 </script>
 
 

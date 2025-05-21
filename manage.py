@@ -35,7 +35,7 @@ if args.action == "run":
         ("yarn build --mode development", "./admin"),
         ("cp -r ./admin/dist/assets ./public", "./"),
         ("cp -r ./admin/dist/vite.svg ./admin/dist/index.html ./public", "./"),
-        ("php artisan serve", "./"),
+        ("php artisan serve --host=0.0.0.0", "./"),
 
     ]
     # print(steps)

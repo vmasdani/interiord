@@ -36,9 +36,9 @@ Route::get('/', function (Request $r) {
 
         ]);
 });
-Route::get('/marmergranit', function (Request $r) {
+Route::get('/marmer', function (Request $r) {
     $sortBy = $r->query('sort_by')  ?? 'recommended';
-    $products = Product::query()->where('type', '=', 'Marmer Granit');
+    $products = Product::query()->where('type', '=', 'Marmer');
 
     if ($sortBy == 'recommended') {
         $products = $products->orderBy('recommended_order', 'DESC');
@@ -49,12 +49,32 @@ Route::get('/marmergranit', function (Request $r) {
     }
 
     $products = $products->get();
-    return view('marmergranit')->with('data', [
+    return view('marmer')->with('data', [
         'adminsetting' => Adminsetting::query()->first(),
         'products' => $products,
         'sort_by' => $sortBy
     ]);
 });
+Route::get('/granit', function (Request $r) {
+    $sortBy = $r->query('sort_by')  ?? 'recommended';
+    $products = Product::query()->where('type', '=', 'Granit');
+
+    if ($sortBy == 'recommended') {
+        $products = $products->orderBy('recommended_order', 'DESC');
+    } else if ($sortBy == 'bestseller') {
+        $products = $products->orderBy('bestseller_order', 'DESC');
+    } else {
+        $products = $products->orderBy('recommended_order', 'DESC');
+    }
+
+    $products = $products->get();
+    return view('granit')->with('data', [
+        'adminsetting' => Adminsetting::query()->first(),
+        'products' => $products,
+        'sort_by' => $sortBy
+    ]);
+});
+
 
 Route::get('/besi', function (Request $r) {
     $sortBy = $r->query('sort_by') ?? 'recommended';

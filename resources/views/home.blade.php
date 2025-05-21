@@ -116,7 +116,7 @@
         <div class="d-flex align-items-center justify-content-center flex-wrap">
             <div class="d-flex flex-column align-items-center justify-content-center  flex-grow-1">
                 <div style="background-color: #d3d7db" class="bg-light rounded rounded-md p-3"><strong>Why
-                        CENTRUME_ind?</strong></div>
+                        DMG_Marmergranit?</strong></div>
 
                 <div>
                     <div>
@@ -136,7 +136,7 @@
                         </div>
                         <div>
                             <ul>
-                                <li>Berpengalaman lebih dari 1 tahun</li>
+                                <li>Berpengalaman lebih dari 10 tahun</li>
                                 <li>Memiliki tim yang berpengelaman di bidangnya</li>
                                 <li>Konsultasi dan survey gratis</li>
 

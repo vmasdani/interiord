@@ -98,7 +98,7 @@ handleInit();
         <small><strong>Product Type </strong></small>
     </div>
     <div class="d-flex">
-        <div v-for="h in ['Marmer Granit', 'Besi', 'Aksesoris']">
+        <div v-for="h in ['Marmer', 'Granit', 'Besi', 'Aksesoris']">
             <button
                 :class="`btn btn-sm ${
                     product.type === h ? `btn-primary` : `btn-outline-primary`
